@@ -14,6 +14,7 @@
 		6380A94E2983D5BC00FD38DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6380A94C2983D5BC00FD38DB /* LaunchScreen.storyboard */; };
 		6380A9572986972F00FD38DB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380A9562986972F00FD38DB /* MenuViewController.swift */; };
 		6380A9592986985700FD38DB /* BlankScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380A9582986985700FD38DB /* BlankScene.swift */; };
+		6380A95D2986B4B300FD38DB /* FloorsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380A95C2986B4B300FD38DB /* FloorsScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		6380A94D2983D5BC00FD38DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6380A9562986972F00FD38DB /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		6380A9582986985700FD38DB /* BlankScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankScene.swift; sourceTree = "<group>"; };
+		6380A95C2986B4B300FD38DB /* FloorsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorsScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			children = (
 				6380A9432983D5B900FD38DB /* AppleGameScene.swift */,
 				6380A9582986985700FD38DB /* BlankScene.swift */,
+				6380A95C2986B4B300FD38DB /* FloorsScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				6380A9442983D5B900FD38DB /* AppleGameScene.swift in Sources */,
 				6380A9462983D5B900FD38DB /* GameViewController.swift in Sources */,
 				6380A9592986985700FD38DB /* BlankScene.swift in Sources */,
+				6380A95D2986B4B300FD38DB /* FloorsScene.swift in Sources */,
 				6380A93E2983D5B900FD38DB /* AppDelegate.swift in Sources */,
 				6380A9572986972F00FD38DB /* MenuViewController.swift in Sources */,
 			);
