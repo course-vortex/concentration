@@ -25,6 +25,7 @@ class MenuViewController: UIViewController {
         let stack = UIStackView()
         stack.alignment = . center
         stack.axis = .vertical
+        stack.spacing = 8
         
         stack.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(stack)
@@ -34,7 +35,7 @@ class MenuViewController: UIViewController {
         ])
         
         for game in games {
-            let button = UIButton(type: .system, primaryAction: UIAction(title: "Button Title", handler: { _ in
+            let button = IAButton(type: .system, primaryAction: UIAction(title: "Button Title", handler: { _ in
                 self.presentGameVC(scene: game.scene)
             }))
             button.setTitle("\(game.label)", for: .normal)
