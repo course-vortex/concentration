@@ -11,7 +11,17 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     
-    var scene: SKScene? // TODO: replace let and pass it with init
+    init(sceneType: SKScene.Type) {
+        self.sceneType = sceneType
+        super.init(nibName: nil, bundle: nil)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private let sceneType: SKScene.Type
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,12 +30,8 @@ class GameViewController: UIViewController {
         skView.showsPhysics = true
         super.view = skView
         
-        print(view.frame)
-        scene?.scaleMode = .resizeFill
+        let scene = sceneType.init(size: .zero)
+        scene.scaleMode = .resizeFill
         skView.presentScene(scene)
-
-        if nil == scene {
-            print("found nil in scene!")
-        }
     }
 }
