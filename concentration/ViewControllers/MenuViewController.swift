@@ -16,7 +16,8 @@ class MenuViewController: UIViewController {
     
     let games: [IASceneType] = [
         .init(scene: AppleGameScene(), label: "Apple Scene"),
-        .init(scene: BlankScene(), label: "Blank Scene")
+        .init(scene: BlankScene(), label: "Blank Scene"),
+        .init(scene: SpinningBoxAndBalls(), label: "Spinning box and balls")
     ]
 
     override func viewDidLoad() {
