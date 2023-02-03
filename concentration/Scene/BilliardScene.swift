@@ -6,27 +6,45 @@
 //
 
 import SpriteKit
+//1
+//lets stope moving it on repeat
+//let the game begin with "swipe to start"
+//and then apply random impulse only when you remove balls
+
 
 class BilliardScene: SKScene {
     
-    let matrixSize = 5
-    let matrixMargin: CGFloat = 32
-    let spacing: CGFloat = 4
     
     var startPoint = CGPoint()
     var whiteBall = SKShapeNode()
+    let startLabel = SKLabelNode()
     
     override func didMove(to view: SKView) {
         
-        self.removeAllChildren()
         
         self.anchorPoint = .init(x: 0.5, y: 0.5)
+       
+        startLabel.text = "swipe to start"
+        startLabel.fontSize = 40
+        
+        startLabel.position.x = self.position.x
+        startLabel.position.y = -self.frame.height / 4
+
+        startLabel.zPosition = 11
+        addChild(startLabel)
+        
+        let matrixSize = 6
+    
+        let matrixMargin: CGFloat = 96
+
                 
-        let containerWidth = size.width - (CGFloat(matrixMargin) * 2 + spacing * CGFloat(matrixSize - 1))
+        let containerWidth = size.width - (matrixMargin * 2)
       
         let width = containerWidth / CGFloat(matrixSize)
 
         let card = SKShapeNode.init(circleOfRadius: width / 2)
+        
+        card.name = "card"
         
         card.physicsBody = .init(circleOfRadius: width / 2)
         card.physicsBody?.restitution = 0.8
@@ -34,14 +52,14 @@ class BilliardScene: SKScene {
         let xOffset = -frame.width / 2 + matrixMargin + 0.5 * width
         let yOffset: CGFloat = -50
         for i in 0..<matrixSize {
-            let y = yOffset + CGFloat(i) * (width + spacing)
+            let y = yOffset + CGFloat(i) * (width)
             for j in 0..<matrixSize {
                 
-                let x = xOffset + CGFloat(j) * (width + spacing)
+                let x = xOffset + CGFloat(j) * (width)
                 let copy = card.copy() as! SKShapeNode
                 copy.position = CGPoint(x: x, y: y)
                 copy.fillColor = .black
-                
+                print(copy.name!)
                 addChild(copy)
             }
         }
@@ -53,14 +71,9 @@ class BilliardScene: SKScene {
         
         whiteBall.physicsBody = .init(circleOfRadius: width / 2)
         whiteBall.physicsBody?.mass = 20
+        whiteBall.physicsBody?.restitution = 0.8
         
-        let sqns = SKAction.sequence([
-            .run { self.applyRandomImpulse(to: self.whiteBall) },
-            .wait(forDuration: 5)
-        ])
-        
-        run(.repeatForever(sqns))
-        
+        // TODO: swipe to start then apply random impulse when you remove balls
         addChild(whiteBall)
         
         physicsWorld.gravity.dy = 0
@@ -70,7 +83,7 @@ class BilliardScene: SKScene {
     
     func applyRandomImpulse(to node: SKNode) {
         
-        let arr = Array(5...9).map { $0 * 300 } + Array(-9...(-5)).map { $0 * 300 }
+        let arr = Array(7...9).map { $0 * 600 } + Array(-9...(-7)).map { $0 * 600 }
         
         let dx = arr.randomElement()!
         let dy = arr.randomElement()!
@@ -79,15 +92,30 @@ class BilliardScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let location = touches.first!.location(in: view)
+        
+        let location = touches.first!.location(in: self)
+        
         startPoint = location
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let location = touches.first!.location(in: view)
-        let dy = (location.y - startPoint.y) * 50
-        let dx = -(location.x - startPoint.x) * 50
-        whiteBall.physicsBody?.applyImpulse(CGVector(dx: dx, dy: dy))
+        let location = touches.first!.location(in: self)
+       
+        let node = self.atPoint(location)
+        if node.name == "card" {
+            node.removeFromParent()
+            applyRandomImpulse(to: whiteBall)
+        }
+        
+        if !startLabel.isHidden {
+            startLabel.isHidden = true
+
+            let dy = (location.y - startPoint.y) * 50
+            let dx = -(location.x - startPoint.x) * 50
+            whiteBall.physicsBody?.applyImpulse(CGVector(dx: dx, dy: dy))
+
+        }
     }
 
 
