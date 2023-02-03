@@ -6,11 +6,6 @@
 //
 
 import SpriteKit
-//1
-//lets stope moving it on repeat
-//let the game begin with "swipe to start"
-//and then apply random impulse only when you remove balls
-
 
 class BilliardScene: SKScene {
     
@@ -21,7 +16,7 @@ class BilliardScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        
+        backgroundColor = .init(red: 21 / 255, green: 88 / 255, blue: 67 / 255, alpha: 1)
         self.anchorPoint = .init(x: 0.5, y: 0.5)
        
         startLabel.text = "swipe to start"
@@ -35,7 +30,7 @@ class BilliardScene: SKScene {
         
         let matrixSize = 6
     
-        let matrixMargin: CGFloat = 96
+        let matrixMargin: CGFloat = 80
 
                 
         let containerWidth = size.width - (matrixMargin * 2)
@@ -43,7 +38,7 @@ class BilliardScene: SKScene {
         let width = containerWidth / CGFloat(matrixSize)
 
         let card = SKShapeNode.init(circleOfRadius: width / 2)
-        
+
         card.name = "card"
         
         card.physicsBody = .init(circleOfRadius: width / 2)
@@ -73,7 +68,6 @@ class BilliardScene: SKScene {
         whiteBall.physicsBody?.mass = 20
         whiteBall.physicsBody?.restitution = 0.8
         
-        // TODO: swipe to start then apply random impulse when you remove balls
         addChild(whiteBall)
         
         physicsWorld.gravity.dy = 0
