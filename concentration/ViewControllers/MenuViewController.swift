@@ -20,7 +20,8 @@ class MenuViewController: UIViewController {
         .init(scene: TriangleScene(), label: "Triangle Scene")
         .init(scene: AppleGameScene.self, label: "Apple Scene"),
         .init(scene: BlankScene.self, label: "Blank Scene"),
-        .init(scene: FloorsScene.self, label: "Floors Scene")
+        .init(scene: FloorsScene.self, label: "Floors Scene"),
+        .init(scene: BilliardScene.self, label: "Billiard Scene")
     ]
 
     override func viewDidLoad() {
