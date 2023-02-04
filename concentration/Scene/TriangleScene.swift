@@ -9,18 +9,29 @@ import SpriteKit
 
 class TriangleScene: SKScene {
     
-    let sizeBall: CGFloat = 30
+    var sizeBall: CGFloat = 0
+    let numberOfBalls = 20
     
     override func didMove(to view: SKView) {
         
         self.anchorPoint = .init(x: 0.5, y: 0.5)
         
         let circul = SKTexture(imageNamed: "ball")
-        let spriteСircul = SKSpriteNode(texture: circul, size: .init(width: sizeBall, height: sizeBall))
-        spriteСircul.physicsBody = SKPhysicsBody(circleOfRadius: sizeBall / 2)
-        spriteСircul.position = .init(x: 0, y: self.frame.maxY - 100)
         
-        for _ in 0...50 {
+        for _ in 1...numberOfBalls {
+            switch numberOfBalls {
+            case 1...10:
+                sizeBall = 88
+            case 11...50:
+                sizeBall = 66
+            default:
+                sizeBall = 44
+            }
+            
+            var spriteСircul = SKSpriteNode(texture: circul, size: .init(width: sizeBall, height: sizeBall))
+            spriteСircul.physicsBody = SKPhysicsBody(circleOfRadius: spriteСircul.frame.height / 2)
+            spriteСircul.position = .init(x: 0, y: self.frame.maxY - 100)
+            
             let copy = spriteСircul.copy() as! SKSpriteNode
             self.addChild(copy)
         }
@@ -39,7 +50,7 @@ class TriangleScene: SKScene {
     func setTriangle() -> SKSpriteNode {
         
         let triangleTexture = SKTexture(imageNamed: "triangle")
-        let spriteTriangle = SKSpriteNode(texture: triangleTexture, size: .init(width: self.frame.width - (sizeBall * 2), height: 100))
+        let spriteTriangle = SKSpriteNode(texture: triangleTexture, size: .init(width: self.frame.width - (sizeBall * 2) - 4, height: 100))
         
         let offsetX = spriteTriangle.frame.size.width * spriteTriangle.anchorPoint.x
         let offsetY = spriteTriangle.frame.size.height * spriteTriangle.anchorPoint.y
