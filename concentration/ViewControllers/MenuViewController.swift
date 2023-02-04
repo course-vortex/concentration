@@ -15,13 +15,10 @@ struct IASceneType {
 class MenuViewController: UIViewController {
     
     let games: [IASceneType] = [
-        .init(scene: AppleGameScene(), label: "Apple Scene"),
-        .init(scene: BlankScene(), label: "Blank Scene"),
-        .init(scene: TriangleScene(), label: "Triangle Scene")
         .init(scene: AppleGameScene.self, label: "Apple Scene"),
-        .init(scene: BlankScene.self, label: "Blank Scene"),
         .init(scene: FloorsScene.self, label: "Floors Scene"),
-        .init(scene: BilliardScene.self, label: "Billiard Scene")
+        .init(scene: BilliardScene.self, label: "Billiard Scene"),
+        .init(scene: TriangleScene.self, label: "Triangle Scene"),
     ]
 
     override func viewDidLoad() {
