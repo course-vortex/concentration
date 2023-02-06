@@ -15,6 +15,7 @@
 		6380A9572986972F00FD38DB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380A9562986972F00FD38DB /* MenuViewController.swift */; };
 		6380A95D2986B4B300FD38DB /* FloorsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380A95C2986B4B300FD38DB /* FloorsScene.swift */; };
 		6380A99E2987F3A900FD38DB /* IAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380A99D2987F3A900FD38DB /* IAButton.swift */; };
+		B03A63CE2990F74B008F37F5 /* SpinningBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A63CD2990F74B008F37F5 /* SpinningBoxScene.swift */; };
 		C02779912988078C00A235FE /* TriangleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02779902988078C00A235FE /* TriangleScene.swift */; };
 		C360052029883246008E59E0 /* BilliardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360051F29883246008E59E0 /* BilliardScene.swift */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,7 @@
 		6380A9562986972F00FD38DB /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		6380A95C2986B4B300FD38DB /* FloorsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorsScene.swift; sourceTree = "<group>"; };
 		6380A99D2987F3A900FD38DB /* IAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAButton.swift; sourceTree = "<group>"; };
+		B03A63CD2990F74B008F37F5 /* SpinningBoxScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningBoxScene.swift; sourceTree = "<group>"; };
 		C02779902988078C00A235FE /* TriangleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleScene.swift; sourceTree = "<group>"; };
 		C360051F29883246008E59E0 /* BilliardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilliardScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +82,7 @@
 				C02779902988078C00A235FE /* TriangleScene.swift */,
 				C360051F29883246008E59E0 /* BilliardScene.swift */,
 				6380A95C2986B4B300FD38DB /* FloorsScene.swift */,
+				B03A63CD2990F74B008F37F5 /* SpinningBoxScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				C360052029883246008E59E0 /* BilliardScene.swift in Sources */,
 				6380A9462983D5B900FD38DB /* GameViewController.swift in Sources */,
 				C02779912988078C00A235FE /* TriangleScene.swift in Sources */,
+				B03A63CE2990F74B008F37F5 /* SpinningBoxScene.swift in Sources */,
 				6380A95D2986B4B300FD38DB /* FloorsScene.swift in Sources */,
 				6380A93E2983D5B900FD38DB /* AppDelegate.swift in Sources */,
 				6380A9572986972F00FD38DB /* MenuViewController.swift in Sources */,
