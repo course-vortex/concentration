@@ -8,16 +8,17 @@
 import SpriteKit
 
 struct IASceneType {
-    let scene: SKScene
+    let scene: SKScene.Type
     let label: String
 }
 
 class MenuViewController: UIViewController {
     
     let games: [IASceneType] = [
-        .init(scene: AppleGameScene(), label: "Apple Scene"),
-        .init(scene: BlankScene(), label: "Blank Scene"),
-        .init(scene: SpinningBoxAndBalls(), label: "Spinning box and balls")
+        .init(scene: AppleGameScene.self, label: "Apple Scene"),
+        .init(scene: FloorsScene.self, label: "Floors Scene"),
+        .init(scene: BilliardScene.self, label: "Billiard Scene"),
+        .init(scene: TriangleScene.self, label: "Triangle Scene"),
     ]
 
     override func viewDidLoad() {
@@ -37,16 +38,15 @@ class MenuViewController: UIViewController {
         
         for game in games {
             let button = IAButton(type: .system, primaryAction: UIAction(title: "Button Title", handler: { _ in
-                self.presentGameVC(scene: game.scene)
+                self.presentGameVC(sceneType: game.scene)
             }))
             button.setTitle("\(game.label)", for: .normal)
             stack.addArrangedSubview(button)
         }
     }
     
-    func presentGameVC(scene: SKScene) {
-        let vc = GameViewController()
-        vc.scene = scene
+    func presentGameVC(sceneType: SKScene.Type) {
+        let vc = GameViewController(sceneType: sceneType)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
