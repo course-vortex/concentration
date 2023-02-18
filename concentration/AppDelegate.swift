@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         window?.makeKeyAndVisible()
-        let vc = MenuViewController()
+        let vc = GameOverViewController()
         let nc = UINavigationController(rootViewController: vc)
         window?.rootViewController = nc
         

@@ -28,7 +28,7 @@ class TriangleScene: SKScene {
                 sizeBall = 44
             }
             
-            var spriteСircul = SKSpriteNode(texture: circul, size: .init(width: sizeBall, height: sizeBall))
+            let spriteСircul = SKSpriteNode(texture: circul, size: .init(width: sizeBall, height: sizeBall))
             spriteСircul.physicsBody = SKPhysicsBody(circleOfRadius: spriteСircul.frame.height / 2)
             spriteСircul.position = .init(x: 0, y: self.frame.maxY - 100)
             
