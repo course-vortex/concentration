@@ -7,54 +7,10 @@
 
 import UIKit
 
-struct Section {
-    let title: String
-    let options: [SettingsOptionType]
-}
-
-enum SettingsOptionType {
-    case staticCell(model: SettingsOption)
-    case switchCell(model: SettingsSwitchOption)
-    case sliderCell(model: SettingsSliderOption)
-    case segmentCell(model: SettingsSegmentOption)
-}
-
-struct SettingsOption {
-    let title: String
-    let icon: UIImage?
-    let iconBackgroundColor: UIColor
-    let handler: (() -> Void)
-}
-
-struct SettingsSwitchOption {
-    let title: String
-    let icon: UIImage?
-    let iconBackgroundColor: UIColor
-    var isOn: Bool
-    let handler: ((Bool) -> Void)
-}
-
-struct SettingsSliderOption {
-    let title: String
-    let icon: UIImage?
-    let iconBackgroundColor: UIColor
-    var value: Float
-    let handler: ((Float) -> Void)
-}
-
-struct SettingsSegmentOption {
-    let title: String
-    let icon: UIImage?
-    let iconBackgroundColor: UIColor
-    var segments: [String]
-    let handler: ((Int) -> Void)
-}
-
-
-var models = [Section]()
-
 class SettingsVC: UIViewController {
     
+    var models = [Section]()
+
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         
