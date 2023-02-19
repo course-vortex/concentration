@@ -8,8 +8,7 @@ import SpriteKit
 
 class SpinningBoxAndBalls: SKScene {
     
-    var ballQuantity = 16
-    
+    var game = Game(numberOfPairsOfBalls: .easy)
     enum GameState { case startGame, playing }
     var gameState = GameState.startGame
     var box: SKShapeNode!
@@ -20,6 +19,7 @@ class SpinningBoxAndBalls: SKScene {
         setupStartLabel()
         createteBox()
         fillTheBox()
+        game.gameFinished = self
     }
     
     // MARK:  game state: startGame
@@ -49,7 +49,7 @@ class SpinningBoxAndBalls: SKScene {
         ball.physicsBody?.affectedByGravity = false
         ball.physicsBody?.restitution = 0.3
         ball.physicsBody?.friction = 0.05
-        ball.name = "ball"
+//        ball.name = "ball"
         return ball
     }
     
@@ -66,32 +66,52 @@ class SpinningBoxAndBalls: SKScene {
     }
     
     func fillTheBox() {
-        var count = ballQuantity
-        let matrixSize = Int((sqrt(Double(ballQuantity))).rounded(.up))
+        var count = game.balls.count
+        let matrixSize = Int((sqrt(Double(count))).rounded(.up))
         let matrixSingleBoxSize = box.frame.width / CGFloat(matrixSize)
         let offset = matrixSingleBoxSize / 2 * sqrt(2)
         let offsetRotation = box.frame.width * sqrt(2) / 2 - (box.frame.width / 2) - offset
-        let ball = createBall(ofRadius: matrixSingleBoxSize * 0.40)
         print(matrixSingleBoxSize)
         for i in 0..<matrixSize {
             for j in 0..<matrixSize {
                 if count > 0 {
                     count -= 1
-                    let ballCopy = ball.copy() as! SKSpriteNode
-                    self.addChild(ballCopy)
-                    ballCopy.position = .init(x: box.frame.midX + offset * CGFloat(j) - offset * CGFloat(i) ,
+                    let ball = createBall(ofRadius: matrixSingleBoxSize * 0.40)
+                    let imageName = String(game.balls[count].identifier)
+                    ball.name = String(count)
+                    ball.texture = .init(image: UIImage(systemName: "\(imageName).circle")!)
+                    self.addChild(ball)
+                    ball.position = .init(x: box.frame.midX + offset * CGFloat(j) - offset * CGFloat(i) ,
                                               y: box.frame.maxY + offsetRotation - offset * CGFloat(i) - offset * CGFloat(j))
-                    ballCopy.run(.wait(forDuration: 0.4))
+                    ball.run(.wait(forDuration: 0.4))
                 }
             }
         }
     }
     
+    func updateGameFromModel() {
+        for index in game.balls.indices {
+            let ballFromModel = game.balls[index]
+            let ballUI = self.childNode(withName: String(index)) as! SKSpriteNode
+            if ballFromModel.isShowing {
+                ballUI.texture = .init(image: UIImage(systemName: "\(ballFromModel.identifier).circle")!)
+            } else {
+                if ballFromModel.isMathced {
+                    ballUI.isHidden = true
+                    ballUI.physicsBody = nil } else {
+                        ballUI.texture = .init(imageNamed: "ball_04")
+                    }
+            }
+        }
+    }
+    
     func startRotating() {
-        self.children.forEach{ node in
-            if node.name == "ball" {
-                node.physicsBody?.isDynamic = true
-                node.physicsBody?.affectedByGravity = true
+        self.children.forEach { node in
+            if node.name != nil {
+                guard let ball = node as? SKSpriteNode else { return }
+                ball.texture = .init(imageNamed: "ball_04")
+                ball.physicsBody?.isDynamic = true
+                ball.physicsBody?.affectedByGravity = true
             }
         }
         let action = SKAction.rotate(byAngle: -.pi, duration: 1)
@@ -107,17 +127,18 @@ class SpinningBoxAndBalls: SKScene {
         case .playing:
             let location = (touches.first!.location(in: self))
             let node = self.atPoint(location)
-            if node.name == "ball" {
-                node.removeFromParent()
-                if  self.childNode(withName: "ball") == nil {
-                    gameState = .startGame
-                    box.removeFromParent()
-                    setupStartLabel()
-                    createteBox()
-                    fillTheBox()
-                    
-                }
+            if node.name != nil {
+                let index = Int(node.name!)
+                game.chooseBall(at: index!)
+                updateGameFromModel()
+                game.gameEnd()
             }
         }
+    }
+}
+
+extension SpinningBoxAndBalls: GameFinished {
+    func gameWasFinished() {
+        print("Present GameOverController or Menu")
     }
 }
