@@ -18,6 +18,11 @@
 		B03A63CE2990F74B008F37F5 /* SpinningBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A63CD2990F74B008F37F5 /* SpinningBoxScene.swift */; };
 		C02779912988078C00A235FE /* TriangleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02779902988078C00A235FE /* TriangleScene.swift */; };
 		C360052029883246008E59E0 /* BilliardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360051F29883246008E59E0 /* BilliardScene.swift */; };
+		C3BB9B77299F8AFD008796BD /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB9B76299F8AFD008796BD /* SettingsVC.swift */; };
+		C3BB9B79299F8BC9008796BD /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB9B78299F8BC9008796BD /* SettingsTableViewCell.swift */; };
+		C3BB9B7B299FAADE008796BD /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB9B7A299FAADE008796BD /* SwitchTableViewCell.swift */; };
+		C3BB9B7D29A0F567008796BD /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB9B7C29A0F566008796BD /* SliderTableViewCell.swift */; };
+		C3BB9B7F29A10492008796BD /* SegmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB9B7E29A10492008796BD /* SegmentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,11 @@
 		B03A63CD2990F74B008F37F5 /* SpinningBoxScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningBoxScene.swift; sourceTree = "<group>"; };
 		C02779902988078C00A235FE /* TriangleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleScene.swift; sourceTree = "<group>"; };
 		C360051F29883246008E59E0 /* BilliardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilliardScene.swift; sourceTree = "<group>"; };
+		C3BB9B76299F8AFD008796BD /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		C3BB9B78299F8BC9008796BD /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		C3BB9B7A299FAADE008796BD /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		C3BB9B7C29A0F566008796BD /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
+		C3BB9B7E29A10492008796BD /* SegmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +79,7 @@
 				6380A99D2987F3A900FD38DB /* IAButton.swift */,
 				6380A95A2986987600FD38DB /* Scene */,
 				6380A95B29869A0700FD38DB /* ViewControllers */,
+				C3BB9B8029A215FC008796BD /* CustomCells */,
 				6380A94A2983D5BC00FD38DB /* Assets.xcassets */,
 				6380A94C2983D5BC00FD38DB /* LaunchScreen.storyboard */,
 			);
@@ -92,8 +103,20 @@
 			children = (
 				6380A9452983D5B900FD38DB /* GameViewController.swift */,
 				6380A9562986972F00FD38DB /* MenuViewController.swift */,
+				C3BB9B76299F8AFD008796BD /* SettingsVC.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C3BB9B8029A215FC008796BD /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				C3BB9B78299F8BC9008796BD /* SettingsTableViewCell.swift */,
+				C3BB9B7A299FAADE008796BD /* SwitchTableViewCell.swift */,
+				C3BB9B7E29A10492008796BD /* SegmentTableViewCell.swift */,
+				C3BB9B7C29A0F566008796BD /* SliderTableViewCell.swift */,
+			);
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,14 +190,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				6380A9442983D5B900FD38DB /* AppleGameScene.swift in Sources */,
+				C3BB9B7D29A0F567008796BD /* SliderTableViewCell.swift in Sources */,
 				6380A99E2987F3A900FD38DB /* IAButton.swift in Sources */,
 				C360052029883246008E59E0 /* BilliardScene.swift in Sources */,
 				6380A9462983D5B900FD38DB /* GameViewController.swift in Sources */,
 				C02779912988078C00A235FE /* TriangleScene.swift in Sources */,
+				C3BB9B7B299FAADE008796BD /* SwitchTableViewCell.swift in Sources */,
 				B03A63CE2990F74B008F37F5 /* SpinningBoxScene.swift in Sources */,
+				C3BB9B79299F8BC9008796BD /* SettingsTableViewCell.swift in Sources */,
+				C3BB9B7F29A10492008796BD /* SegmentTableViewCell.swift in Sources */,
 				6380A95D2986B4B300FD38DB /* FloorsScene.swift in Sources */,
 				6380A93E2983D5B900FD38DB /* AppDelegate.swift in Sources */,
 				6380A9572986972F00FD38DB /* MenuViewController.swift in Sources */,
+				C3BB9B77299F8AFD008796BD /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
