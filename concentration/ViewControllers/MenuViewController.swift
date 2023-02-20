@@ -37,6 +37,11 @@ class MenuViewController: UIViewController {
             stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
         
+        let settingsButton = IAButton(type: .system, primaryAction: UIAction(title: "Settings") { _ in
+                    let vc = SettingsVC()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                })
+        
         for game in games {
             let button = IAButton(type: .system, primaryAction: UIAction(title: "Button Title", handler: { _ in
                 self.presentGameVC(sceneType: game.scene)
@@ -44,6 +49,7 @@ class MenuViewController: UIViewController {
             button.setTitle("\(game.label)", for: .normal)
             stack.addArrangedSubview(button)
         }
+        stack.addArrangedSubview(settingsButton)
     }
     
     func presentGameVC(sceneType: SKScene.Type) {

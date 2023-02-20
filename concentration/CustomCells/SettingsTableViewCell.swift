@@ -61,27 +61,27 @@ class SettingsTableViewCell: UITableViewCell {
         iconContainer.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         iconContainer.widthAnchor.constraint(equalToConstant: size).isActive = true
         iconContainer.heightAnchor.constraint(equalToConstant: size).isActive = true
-
+        
         let imageSize = size / 1.5
-      
+        
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         
         iconImageView.centerXAnchor.constraint(equalTo: iconContainer.centerXAnchor).isActive = true
         iconImageView.centerYAnchor.constraint(equalTo: iconContainer.centerYAnchor).isActive = true
         iconImageView.widthAnchor.constraint(equalToConstant: imageSize).isActive = true
         iconImageView.heightAnchor.constraint(equalToConstant: imageSize).isActive = true
-               
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         
         label.leadingAnchor.constraint(equalTo: iconContainer.trailingAnchor, constant: 16).isActive = true
         label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         
     }
-   
+    
     @objc private func buttonTapped() {
         buttonHandler?()
     }
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil

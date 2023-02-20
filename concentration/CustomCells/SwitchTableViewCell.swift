@@ -12,6 +12,8 @@ class SwitchTableViewCell: UITableViewCell {
     
     var switchHandler: ((Bool) -> Void)?
     
+    var isSwitchOn = true
+    
     private let iconContainer: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -65,21 +67,21 @@ class SwitchTableViewCell: UITableViewCell {
         iconContainer.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         iconContainer.widthAnchor.constraint(equalToConstant: size).isActive = true
         iconContainer.heightAnchor.constraint(equalToConstant: size).isActive = true
-
+        
         let imageSize = size / 1.5
-      
+        
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         
         iconImageView.centerXAnchor.constraint(equalTo: iconContainer.centerXAnchor).isActive = true
         iconImageView.centerYAnchor.constraint(equalTo: iconContainer.centerYAnchor).isActive = true
         iconImageView.widthAnchor.constraint(equalToConstant: imageSize).isActive = true
         iconImageView.heightAnchor.constraint(equalToConstant: imageSize).isActive = true
-               
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         
         label.leadingAnchor.constraint(equalTo: iconContainer.trailingAnchor, constant: 16).isActive = true
         label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-
+        
         mySwitch.sizeToFit()
         
         mySwitch.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +93,7 @@ class SwitchTableViewCell: UITableViewCell {
     @objc private func switchValueChanged() {
         switchHandler?(mySwitch.isOn)
     }
-
+    
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -105,6 +107,6 @@ class SwitchTableViewCell: UITableViewCell {
         label.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
-        mySwitch.isOn = model.isOn
+        mySwitch.isOn = isSwitchOn
     }
 }

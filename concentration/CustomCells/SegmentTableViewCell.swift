@@ -13,6 +13,8 @@ class SegmentTableViewCell: UITableViewCell {
     
     var segmentHandler: ((Int) -> Void)?
     
+    var selectedSegmentIndex = 0
+    
     private let iconContainer: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -38,7 +40,7 @@ class SegmentTableViewCell: UITableViewCell {
     
     private lazy var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: items)
-       
+        
         let userInterfaceStyle = traitCollection.userInterfaceStyle
         segmentedControl.selectedSegmentIndex = 0
         return segmentedControl
@@ -119,8 +121,8 @@ class SegmentTableViewCell: UITableViewCell {
             segmentedControl.insertSegment(withTitle: item, at: index, animated: false)
         }
         
-        segmentedControl.selectedSegmentIndex = 0
-
+        segmentedControl.selectedSegmentIndex = selectedSegmentIndex
+        
     }
 }
 

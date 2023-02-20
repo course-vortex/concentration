@@ -10,7 +10,7 @@ import UIKit
 class SettingsVC: UIViewController {
     
     var models = [Section]()
-
+    
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         
@@ -34,6 +34,7 @@ class SettingsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
     override func viewDidLayoutSubviews() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -55,25 +56,28 @@ class SettingsVC: UIViewController {
         
         let appearanceOptions = ["System", "Light", "Dark"]
         let colors = ["Black", "Red", "Yellow", "Green"]
-                
+        
         models.append(Section(title: "Vibration and Sound",options: [
             .switchCell(model: SettingsSwitchOption(title: "Vibration",
                                                     icon: vibrationImage,
                                                     iconBackgroundColor: .systemGreen,
                                                     isOn: true) { isOn in
                                                         isOn ? print("Vibration On") : print("Vibration off")
+//                                                        SettingsManager.shared.setVibration(value: isOn)
                                                     }),
             .switchCell(model: SettingsSwitchOption(title: "Sound",
                                                     icon: soundImage,
                                                     iconBackgroundColor: .systemIndigo,
                                                     isOn: true) { isOn in
                                                         isOn ? print("Sound On") : print("Sound off")
+//                                                        SettingsManager.shared.setSound(value: isOn)
                                                     }),
             .sliderCell(model: SettingsSliderOption(title: "Volume",
                                                     icon: volumeImage,
                                                     iconBackgroundColor: .systemBlue,
                                                     value: 0) { value in
                                                         print("Volume: \(value * 100)")
+//                                                        SettingsManager.shared.setVolume(value: value)
                                                     })
         ]))
         
@@ -85,10 +89,13 @@ class SettingsVC: UIViewController {
                                                           switch selectedIndex {
                                                           case 0:
                                                               self?.tableView.window?.overrideUserInterfaceStyle = .unspecified
+//                                                              SettingsManager.shared.setAppearance(value: 0)
                                                           case 1:
                                                               self?.tableView.window?.overrideUserInterfaceStyle = .light
+//                                                              SettingsManager.shared.setAppearance(value: 1)
                                                           default:
                                                               self?.tableView.window?.overrideUserInterfaceStyle = .dark
+//                                                              SettingsManager.shared.setAppearance(value: 2)
                                                           }
                                                       }),
             .segmentCell(model: SettingsSegmentOption(title: "Color",
@@ -98,12 +105,16 @@ class SettingsVC: UIViewController {
                                                           switch selectedIndex {
                                                           case 0:
                                                               print(colors[selectedIndex])
+//                                                              SettingsManager.shared.setColor(value: 0)
                                                           case 1:
                                                               print(colors[selectedIndex])
+//                                                              SettingsManager.shared.setColor(value: 1)
                                                           case 2:
                                                               print(colors[selectedIndex])
+//                                                              SettingsManager.shared.setColor(value: 2)
                                                           default:
                                                               print(colors[selectedIndex])
+//                                                              SettingsManager.shared.setColor(value: 3)
                                                           }
                                                       })
         ]))
@@ -112,12 +123,12 @@ class SettingsVC: UIViewController {
             .staticCell(model: SettingsOption (title: "Privacy",
                                                icon: lockImage,
                                                iconBackgroundColor: .systemPink) {
-                                                   print("Static")
+                                                   print("Push VC")
                                                }),
             .staticCell(model: SettingsOption (title: "Terms conditions",
                                                icon: newspaperImage,
                                                iconBackgroundColor: .systemPink) {
-                                                   print("Static")
+                                                   print("Push VC")
                                                })
         ]))
         
@@ -167,6 +178,12 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
             ) as? SwitchTableViewCell else {
                 return UITableViewCell()
             }
+            if model.title == "Vibration" {
+//                cell.isSwitchOn = SettingsManager.shared.getVibration()
+            } else {
+//                cell.isSwitchOn = SettingsManager.shared.getSound()
+            }
+            
             cell.configure(with: model)
             cell.switchHandler = { isOn in
                 model.handler(isOn)
@@ -179,6 +196,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
             ) as? SliderTableViewCell else {
                 return UITableViewCell()
             }
+//            cell.sliderValue = SettingsManager.shared.getVolume()
             cell.configure(with: model)
             cell.sliderHandler = { value in
                 model.handler(value)
@@ -191,6 +209,13 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
             ) as? SegmentTableViewCell else {
                 return UITableViewCell()
             }
+            
+            if model.title == "Mode" {
+//                cell.selectedSegmentIndex = SettingsManager.shared.getAppearance()
+            } else {
+//                cell.selectedSegmentIndex = SettingsManager.shared.getColor()
+            }
+            
             cell.configure(with: model)
             cell.segmentHandler = { selectedIndex in
                 model.handler(selectedIndex)
